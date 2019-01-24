@@ -18,15 +18,15 @@ During the final weeks of the release process, the main focus prior to release h
 
 Throughput:
 
-![](Throughput.png)
+![](img/Throughput.png)
 
 99th percentile update latency
 
-![](Update99.png)
+![](img/Update99.png)
 
 Mean 2i query response time
 
-![](2iMean.png)
+![](img/2iMean.png)
 
 The five scenarios charted here are:
 
