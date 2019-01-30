@@ -76,7 +76,7 @@ The results of the First round of testing are:
 
 Test Suite |  Leveled backend | Bitcask backend | Eleveldb backend
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-KV_all | All pass | All pass | All pass
+kv_all | All pass | All pass | All pass
 2i_all | All pass | n/a | All pass
 mapred_all | All pass | All pass | [mapred_search_switch](#mapred_search_switch)
 pipe_all | All pass | All pass | All pass
@@ -148,9 +148,9 @@ This round of testing was performed on the public Release Candidate.  The result
 
 Test Suite |  Leveled (0.9.9) | Leveled (0.9.10) | Bitcask | Eleveldb
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-KV_all | [verify_conditional_postcommit](#verify_conditional_postcommit) | [verify_conditional_postcommit](#verify_conditional_postcommit) | kv679_dataloss_fb verify_api_timeouts | [verify_conditional_postcommit](#verify_conditional_postcommit)
+kv_all | [verify_conditional_postcommit](#verify_conditional_postcommit) | [verify_conditional_postcommit](#verify_conditional_postcommit) | kv679_dataloss_fb verify_api_timeouts | [verify_conditional_postcommit](#verify_conditional_postcommit)
 2i_all |  All pass | All pass | n/a | All pass
-mapred_all | All pass | All pass | mapred_search_switch | mapred_search_switch
+mapred_all | All pass | All pass | [mapred_search_switch](#mapred_search_switch) | [mapred_search_switch](#mapred_search_switch)
 pipe_all | All pass | All pass | All pass | All pass
 core_all | All pass | All pass | All pass | cluster_meta_rmr
 rtc_all | All pass | All pass | All pass | All pass
@@ -213,3 +213,22 @@ Test was failing as it sets a particular path which it assumes exists (And doesn
 This fails when measuring the change in memory caused by re-putting the same new object over an existing object - https://github.com/basho/riak_test/blob/develop/tests/verify_membackend.erl#L174-L178.  The difference between the memory used and baseline is 26 bytes and not less than 3.
 
 It is unclear what the value of this test is, or the reasoning why the delta should be less than 3 bytes.  Further, the use of the memory backend is not recommended for production environments.  This test failure should be ignored.
+
+### 2.9 RC1
+
+Test Suite |  Leveled (0.9.12) | Bitcask | Eleveldb
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+kv_all | All pass | All pass |
+2i_all |  All pass | n/a |
+mapred_all | [mapred_search_switch](#mapred_search_switch) | |
+pipe_all | All pass |  |
+core_all | All pass |  |
+rtc_all | All pass | |
+datatypes_all | All pass |  |
+repl_all | [repl_aae_fullsync](#repl_aae_fullsync) | [repl_aae_fullsync](#repl_aae_fullsync) |
+admin_all | All pass |  |
+yoko | n/a |  |
+ensemble | ensemble_byzantine ensemble_remove_node |  |
+cluster_upgrade | n/a | n/a |  verify_counter_capability (passes on spine profile) [verify_riak_object_reformat](#verify_riak_object_reformat)
+bitcask_only | n/a |  | n/a
+eleveldb_only | n/a | n/a |
