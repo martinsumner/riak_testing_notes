@@ -57,7 +57,7 @@ Publication of release notes and documentation updates |  unassigned
 Acceptance of PRs into basho repo | complete - mas
 Writing of migration guidance, with publication of volume test results for migration | pending - mas
 Review long-standing doc issues (e.g. term_regex, bitcask sync support, 2i non-recommendation) | unassigned
-Investigate issue with HTTP header limit following mochiweb change from self-parsing | ongoing - mas
+Investigate issue with [HTTP header limit](https://github.com/basho/riak_api/issues/123) following mochiweb change from self-parsing | ongoing - mas
 Attempt to recreate 2.0.5 to 2.9.0 stuck startup issue | ongoing rs
 
 
