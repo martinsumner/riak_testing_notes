@@ -218,11 +218,11 @@ It is unclear what the value of this test is, or the reasoning why the delta sho
 
 Test Suite |  Leveled (0.9.12) | Bitcask | Eleveldb
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-kv_all | All pass | All pass |
+kv_all | All pass | All pass | kv679_dataloss_fb2
 2i_all |  All pass | n/a |
 mapred_all | [mapred_search_switch](#mapred_search_switch) | |
 pipe_all | All pass |  |
-core_all | All pass |  |
+core_all | All pass | All pass | All pass
 rtc_all | All pass | |
 datatypes_all | All pass |  |
 repl_all | [repl_aae_fullsync](#repl_aae_fullsync) | [repl_aae_fullsync](#repl_aae_fullsync) |
@@ -230,5 +230,5 @@ admin_all | All pass |  |
 yoko | n/a |  |
 ensemble | ensemble_byzantine ensemble_remove_node |  |
 cluster_upgrade | n/a | n/a |  verify_counter_capability (passes on spine profile) [verify_riak_object_reformat](#verify_riak_object_reformat)
-bitcask_only | n/a |  | n/a
-eleveldb_only | n/a | n/a |
+bitcask_only | n/a | All pass | n/a
+eleveldb_only | n/a | n/a | All pass
