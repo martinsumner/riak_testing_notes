@@ -232,3 +232,22 @@ ensemble | ensemble_byzantine ensemble_remove_node |  |
 cluster_upgrade | n/a | n/a |  verify_counter_capability (passes on spine profile) [verify_riak_object_reformat](#verify_riak_object_reformat)
 bitcask_only | n/a | All pass | n/a
 eleveldb_only | n/a | n/a | All pass
+
+### 2.9 RC2
+
+Test Suite |  Leveled | Bitcask | Eleveldb
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+kv_all | [verify_conditional_postcommit](#verify_conditional_postcommit) | verify_kv_health_check (pass on re-run) |
+2i_all |  All pass | n/a | All pass
+mapred_all | [mapred_search_switch](#mapred_search_switch) | [mapred_search_switch](#mapred_search_switch) |
+pipe_all | All pass | pipe_verify_handoff_blocking (pass on re-run) |
+core_all | All pass | All pass |
+rtc_all | All pass | All pass |
+datatypes_all | All pass | All pass |
+repl_all | repl_rt_overload (pass on re-run) | [repl_aae_fullsync](#repl_aae_fullsync) |
+admin_all | All pass | All pass |
+yoko | n/a |  |
+ensemble | ensemble_remove_node |  |
+cluster_upgrade | n/a | n/a |
+bitcask_only | n/a | All pass | n/a
+eleveldb_only | n/a | n/a | All pass
