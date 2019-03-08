@@ -17,7 +17,7 @@ The work on release 3.0 builds on the efforts of multiple people who have contri
 - NHS;
 - Airelogic;
 - bet365;
-- plus other key individuals - e.g. Christopher Meiklejohn, Antonio Nikshiev.
+- plus other key individuals - e.g. Christopher Meiklejohn, Antonio Nikishaev.
 
 ## Workshop 1 - 6th March to 8th March
 
