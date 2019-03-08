@@ -23,11 +23,13 @@ The work on release 3.0 builds on the efforts of multiple people who have contri
 
 ### Progress at end of workshop
 
-- Repeatable compilation of Riak on OTP 20 (without yokozuna).
+- Repeatable compilation of Riak on OTP 20 (without yokozuna) on multiple platforms.
 
 - Repeatable compilation of riak_test on OTP 20.
 
 - Analysis of unit and eqc test failures across riak.
+
+- Initial test fixes to riak_kv and riak_core
 
 ### Broad Challenges Going Forward - Towards releasing Riak 3.0
 
@@ -70,6 +72,7 @@ First merge in of develop-2.9 | assigned - martin s
 First pass at running riak_test, analysis of failures and reasons (needs `make devrel`) | unassigned
 First pass at dialyzer, analysis of failures and reasons | unassigned
 Discuss with andrew develop-3.0 vs develop-3.0-lower | assigned - hans
+Write a shot developer guide for working on 3.0 | unassigned
 
 ### Known test issues
 
