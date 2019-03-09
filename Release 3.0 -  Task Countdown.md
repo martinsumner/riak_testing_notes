@@ -76,12 +76,70 @@ Write a shot developer guide for working on 3.0 | unassigned
 
 ### Known test issues
 
-incomplete ... sample issues only ...
 
-Test | Status
-:-------------------------|:-------------------------|
-Sidejob eqc tests | Was already a known issue, but now  more often failing in OTP20
-Poolboy eqc tests | eqc tests do pass on upstream devinus branch
+REPO | NODE | NEW_BRANCH | NOTES
+-- | -- | -- | --
+basho_stats | 0  | develop-3.0 |
+bear | 0 | develop-3.0 | use upstream
+canola | 0 | develop-3.0 |
+cluster_info | 0 | develop-3.0 |
+ebloom | 0 | develop-3.0 |
+edown | 0 | develop-3.0 |
+eleveldb | 0  | develop-3.0 |
+eper | 0 | develop-3.0 | use upstream?
+erlang_js | 0 | develop-3.0 | removed?
+erlydtl | 0 | develop-3.0 |
+eunit_formatters | 0 | develop-3.0 | use upstream
+fuse | 0 | develop-3.0 |
+getopt | 0 | develop-3.0 |
+goldrush | 0 | develop-3.0 | use upstream
+hamcrest | 0 | develop-3.0 |
+ibrowse | 0 | develop-3.0 |
+kvc | 0 | develop-3.0 | use upstream
+meck | 0 | develop-3.0 |
+mochiweb | 0 | develop-3.0 | need to consider upstream
+neotama | 0 | develop-3.0 |
+node_package | 0 | develop-3.0 |
+pbkdf2 | 0 | develop-3.0 |
+poolboy | 0 | develop-3.0 | merge with upstream, should switch to devinus due to testing issues on kyorai
+proper | 0 | develop-3.0 |
+ranch | 0 | develop-3.0 | use upstream
+rebar_lock_deps_plugin | 0 | develop-3.0 | provided by rebar3
+riak_dt | 0 | develop-3.0 | dialyzer needs work
+sidejob | 0 | develop-3.0 | QuickCheck tests fail due to known race, appears more likely to fail in OTP20
+stdlib2 | 0 | develop-3.0 |
+syslog | 0 | develop-3.0 | use upstream
+folsom | 1 | develop-3.0 | use upstream
+hyper | 1 | develop-3.0 | one unit test fails, dialyzer
+lager | 1 | develop-3.0 | use erlang-lager fork
+lager_syslog | 1 | develop-3.0 | use erlang-lager fork
+parse_trans | 1 | develop-3.0 |
+protobuffs | 1 | n/a | rebar_gpb_plugin now used with tsloughter/riak_pb_msgcodegen
+riak_auth_mods | 1 | develop-3.0 |
+setup | 1 | develop-3.0 |
+sext | 1 | develop-3.0 |
+webmachine | 1 |  develop-3.0 | use upstream - will need to add support for configurable receive buffer https://github.com/webmachine/webmachine/issues/299
+cuttlefish | 2 | develop-3.0 |
+exometer_core | 2 | develop-3.0 | use upstream
+merge_index | 2 | - | can be removed?
+riak_ensemble | 2 | develop-3.0 | dialyzer fails, copied in files from riak_test
+riak_pb | 2 | develop-3.0-lower | dialyzer isn't clean & I had to make a rebar3 plugin that's currently hosted under my own GH account
+riaknostic | 2 | - | can be removed?
+bitcask | 3 | develop-3.0 | depends on 'rebar3' branch of cuttlefish, dialyzer not clean
+clique | 3 | develop-3.0 | depends on 'rebar3' branch of cuttlefish
+riak_repl_pb_api | 3 | develop-3.0-lower |
+riak_sysmon | 3 | develop-3.0 |
+riakc | 3 | develop-3.0 |
+riak_core | 4 | develop-3.0 |
+riak_api | 5 |  develop-3.0 | gen_fsm warnings
+riak_control | 5 | develop-3.0 |
+riak_pipe | 5 | develop-3.0 |
+riak_kv | 6 | develop-3.0 | eqc/xref/dialyzer need work
+riak_repl | 7 | develop-3.0 |
+riak_search | 7 | - | can be removed?
+yokozuna | 7 | develop-3.0 | currently not integrated
+riak | 8 |  develop-3.0 |
+
 
 
 ## Workshop 2 - late April / early May
