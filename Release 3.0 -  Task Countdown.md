@@ -101,7 +101,7 @@ mochiweb | 0 | develop-3.0 | need to consider upstream
 neotama | 0 | develop-3.0 |
 node_package | 0 | develop-3.0 |
 pbkdf2 | 0 | develop-3.0 | 46 EUnit test passed, 0 failures, 
-poolboy | 0 | develop-3.0 | merge with upstream. (devinus: all 20 EUnit tests passed, 64% coverage. 2 EQC properties passed. kyorai: all 12 EUnit tests passed, 76% coverage. EQC did not run at first but after some fixing (not complicated) the same 2 EQC properties passed)
+poolboy | 0 | develop-3.0 | merge with upstream. (devinus: all 20 EUnit tests passed, 62% coverage. 2 EQC properties passed, 71.5% coverage. kyorai: all 12 EUnit tests passed, 76% coverage. EQC did not run at first but after some fixing (not complicated) the same 2 EQC properties passed, 73% coverage)
 proper | 0 | develop-3.0 |
 ranch | 0 | develop-3.0 | use upstream
 rebar_lock_deps_plugin | 0 | develop-3.0 | provided by rebar3
