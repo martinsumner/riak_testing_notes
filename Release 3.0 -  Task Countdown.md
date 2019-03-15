@@ -106,7 +106,7 @@ proper | 0 | develop-3.0 | |
 ranch | 0 | develop-3.0 | use upstream |
 rebar_lock_deps_plugin | 0 | develop-3.0 | provided by rebar3 |
 riak_dt | 0 | develop-3.0 | dialyzer needs work. All 105 EUnit tests passed, 76% coverage. | 20 properties passed.
-sidejob | 0 | develop-3.0 | QuickCheck tests fail due to known race, appears more likely to fail in OTP20. No EUnit tests.
+sidejob | 0 | develop-3.0 | QuickCheck tests fail due to known race, appears more likely to fail in OTP20. No EUnit tests. | __REVISIT QuickCheck tests__
 stdlib2 | 0 | develop-3.0 | |
 syslog | 0 | develop-3.0 | use upstream |
 folsom | 1 | develop-3.0 | use upstream |
@@ -119,23 +119,23 @@ riak_auth_mods | 1 | develop-3.0 |  |
 setup | 1 | develop-3.0 | |
 sext | 1 | develop-3.0 |  | 24 properties passed
 webmachine | 1 |  develop-3.0 | use upstream - will need to add support for configurable receive buffer https://github.com/webmachine/webmachine/issues/299
-cuttlefish | 2 | __??? develop-3.0 ???__| There is no develop-3.0 branch in bash repo | In riak_sysmon we point to `rebar3` branch | 1 property passes if rebar.config adapted
+cuttlefish | 2 | __??? develop-3.0 ???__| There is no develop-3.0 branch in bash repo. In riak_sysmon we point to `rebar3` branch. In rebar3 branch 291 tests pass | 1 property passes
 exometer_core | 2 | develop-3.0 | use upstream  |
 merge_index | 2 | - | can be removed?  |
 riak_ensemble | 2 | develop-3.0 | dialyzer fails, copied in files from riak_test. 19 EUnit test passed, nothing about failures, 71% coverage.  | __REVISIT__ 1 property in `eqc/sc.erl`. It passes, but unclear what it tests. Has hard-coded paths in property, e.g. `code:add_path("/Users/jtuple/basho/riak_test.master/deps/riakc/ebin")`  |
 riak_pb | 2 | __develop-3.0-lower__ | dialyzer isn't clean & I had to make a rebar3 plugin that's currently hosted under my own GH account | One property covers 67% of riak_pb_codec
-riaknostic | 2 | - | can be removed? |
+riaknostic | 2 | - | can be removed? | |
 bitcask | 3 | develop-3.0 | depends on 'rebar3' branch of cuttlefish, dialyzer not clean | __REVISIT__
 clique | 3 | develop-3.0 | depends on 'rebar3' branch of cuttlefish | |
-riak_repl_pb_api | 3 | develop-3.0-lower |
-riak_sysmon | 3 | develop-3.0 | 3 EUnit tests passed, 0 failures, 59% code coverage. Points cuttlefish `rebar3` branch | No EQC tests
-riakc | 3 | develop-3.0 |
-riak_core | 4 | develop-3.0 |
-riak_api | 5 |  develop-3.0 | gen_fsm warnings
-riak_control | 5 | develop-3.0 |
-riak_pipe | 5 | develop-3.0 | 8 EUnit test passed, 0 failures, 5% coverage. 1 EQC passed.
-riak_kv | 6 | develop-3.0 | eqc/xref/dialyzer need work
-riak_repl | 7 | develop-3.0 |
+riak_repl_pb_api | 3 | develop-3.0-lower | no tests | no properties
+riak_sysmon | 3 | develop-3.0 | 3 EUnit tests passed, 0 failures, 59% code coverage. Points cuttlefish `rebar3` branch | No properties
+riakc | 3 | develop-3.0 | 404 on https://github.com/basho/riakc ??
+riak_core | 4 | develop-3.0 | | __REVISIT__ property  `bg_manager_eqc:prop_bgmgr` had masked failure, need fix (https://github.com/basho/riak_core/issues/936)
+riak_api | 5 | develop-3.0 | 33 unit tests passed (tests create a `log` directory, configure needed) | no properties
+riak_control | 5 | develop-3.0 | Building packages.idx multiple times... takes ages. Rebar3 build seems terribly broken (recursively depending on itself?). __REVISIT__
+riak_pipe | 5 | develop-3.0 | 8 EUnit test passed, 0 failures, 5% coverage. | 1 property passed. __REVISIT__ properties not executed and PULSE based on gen_fsm, but not instrumented for gen_fsm_compat.
+riak_kv | 6 | develop-3.0 --> __develop-3.0-lower__ now exists as well | eqc/xref/dialyzer need work. Test data issue: https://github.com/basho/riak_kv/issues/1685 | 22 properties pass, 1 property fails __REVISIT__ riak_kv_vnode_status_mgr:prop_any_file_status()
+riak_repl | 7 | __develop-3.0-lower__ | Needs to point to develop.3.0-lower in riak_kv to make it compile. Export all in test and erlang:now usage. __REVISIT__ 5 failing tests of 72, 10 canceled | Some properties pass, some fail. Need further investigation
 riak_search | 7 | - | can be removed?
 yokozuna | 7 | develop-3.0 | currently not integrated
 riak | 8 |  develop-3.0 |
