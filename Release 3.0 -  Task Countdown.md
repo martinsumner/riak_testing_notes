@@ -77,58 +77,58 @@ Write a shot developer guide for working on 3.0 | unassigned
 ### Known test issues
 
 
-REPO | NODE | NEW_BRANCH | NOTES
--- | -- | -- | --
-basho_stats | 0  | develop-3.0 | neither EUnit tests nor QC tests run because missing_R_executable file
-bear | 0 | develop-3.0 | use upstream
-canola | 0 | develop-3.0 |
-cluster_info | 0 | develop-3.0 |
-ebloom | 0 | develop-3.0 |
-edown | 0 | develop-3.0 |
-eleveldb | 0  | develop-3.0 |
-eper | 0 | develop-3.0 | use upstream? 83 EUnit tests passed, 0 failures, 51% coverage. No ECQ tests.
-erlang_js | 0 | develop-3.0 | removed?
-erlydtl | 0 | develop-3.0 |
-eunit_formatters | 0 | develop-3.0 | use upstream
-fuse | 0 | develop-3.0 |
-getopt | 0 | develop-3.0 |
-goldrush | 0 | develop-3.0 | use upstream
-hamcrest | 0 | develop-3.0 |
-ibrowse | 0 | develop-3.0 |
-kvc | 0 | develop-3.0 | use upstream
-meck | 0 | develop-3.0 |
-mochiweb | 0 | develop-3.0 | need to consider upstream
-neotama | 0 | develop-3.0 |
-node_package | 0 | develop-3.0 |
-pbkdf2 | 0 | develop-3.0 | 46 EUnit test passed, 0 failures, 
-poolboy | 0 | develop-3.0 | merge with upstream. (devinus: all 20 EUnit tests passed, 62% coverage. 2 EQC properties passed, 71.5% coverage. kyorai: all 12 EUnit tests passed, 76% coverage. EQC did not run at first but after some fixing (not complicated) the same 2 EQC properties passed, 73% coverage)
-proper | 0 | develop-3.0 |
-ranch | 0 | develop-3.0 | use upstream
-rebar_lock_deps_plugin | 0 | develop-3.0 | provided by rebar3
-riak_dt | 0 | develop-3.0 | dialyzer needs work. All 105 EUnit tests passed, 76% coverage. 20 EQC tests passed.
+REPO | NODE | NEW_BRANCH | NOTES | QuickCheck |
+-- | -- | -- | -- | -- |
+basho_stats | 0  | develop-3.0 | neither EUnit tests nor QC tests run because missing_R_executable file |
+bear | 0 | develop-3.0 | use upstream |
+canola | 0 | develop-3.0 | |
+cluster_info | 0 | develop-3.0 | |
+ebloom | 0 | develop-3.0 | |
+edown | 0 | develop-3.0 | |
+eleveldb | 0  | develop-3.0 | |
+eper | 0 | develop-3.0 | use upstream? 83 EUnit tests passed, 0 failures, 51% coverage. | No eqc tests |
+erlang_js | 0 | develop-3.0 | removed? |
+erlydtl | 0 | develop-3.0 | |
+eunit_formatters | 0 | develop-3.0 | use upstream |
+fuse | 0 | develop-3.0 | |
+getopt | 0 | develop-3.0 | |
+goldrush | 0 | develop-3.0 | use upstream |
+hamcrest | 0 | develop-3.0 | |
+ibrowse | 0 | develop-3.0 | |
+kvc | 0 | develop-3.0 | use upstream |
+meck | 0 | develop-3.0 | |
+mochiweb | 0 | develop-3.0 | need to consider upstream |
+neotama | 0 | develop-3.0 | |
+node_package | 0 | develop-3.0 | |
+pbkdf2 | 0 | develop-3.0 | 46 EUnit test passed, 0 failures |
+poolboy | 0 | develop-3.0 | merge with upstream. (devinus: all 20 EUnit tests passed, 62% coverage. 2 EQC properties passed, 71.5% coverage. kyorai: all 12 EUnit tests passed, 76% coverage. EQC did not run at first but after some fixing (not complicated) the same 2 EQC properties passed, 73% coverage) |
+proper | 0 | develop-3.0 | |
+ranch | 0 | develop-3.0 | use upstream |
+rebar_lock_deps_plugin | 0 | develop-3.0 | provided by rebar3 |
+riak_dt | 0 | develop-3.0 | dialyzer needs work. All 105 EUnit tests passed, 76% coverage. | 20 properties passed.
 sidejob | 0 | develop-3.0 | QuickCheck tests fail due to known race, appears more likely to fail in OTP20. No EUnit tests.
-stdlib2 | 0 | develop-3.0 |
-syslog | 0 | develop-3.0 | use upstream
-folsom | 1 | develop-3.0 | use upstream
-hyper | 1 | develop-3.0 | one unit test fails, dialyzer
-lager | 1 | develop-3.0 | use erlang-lager fork
-lager_syslog | 1 | develop-3.0 | use erlang-lager fork
-parse_trans | 1 | develop-3.0 |
-protobuffs | 1 | n/a | rebar_gpb_plugin now used with tsloughter/riak_pb_msgcodegen
-riak_auth_mods | 1 | develop-3.0 |
-setup | 1 | develop-3.0 |
-sext | 1 | develop-3.0 | 24 EQC properties passed
+stdlib2 | 0 | develop-3.0 | |
+syslog | 0 | develop-3.0 | use upstream |
+folsom | 1 | develop-3.0 | use upstream |
+hyper | 1 | develop-3.0 | one unit test fails, dialyzer |
+lager | 1 | develop-3.0 | use erlang-lager fork |
+lager_syslog | 1 | develop-3.0 | use erlang-lager fork |
+parse_trans | 1 | develop-3.0 |  |
+protobuffs | 1 | n/a | rebar_gpb_plugin now used with  tsloughter/riak_pb_msgcodegen  |
+riak_auth_mods | 1 | develop-3.0 |  |
+setup | 1 | develop-3.0 | |
+sext | 1 | develop-3.0 |  | 24 properties passed
 webmachine | 1 |  develop-3.0 | use upstream - will need to add support for configurable receive buffer https://github.com/webmachine/webmachine/issues/299
-cuttlefish | 2 | develop-3.0 |
-exometer_core | 2 | develop-3.0 | use upstream
-merge_index | 2 | - | can be removed?
-riak_ensemble | 2 | develop-3.0 | dialyzer fails, copied in files from riak_test. 19 EUnit test passed, nothing about failures, 71% coverage. 1 EQC test passed
-riak_pb | 2 | develop-3.0-lower | dialyzer isn't clean & I had to make a rebar3 plugin that's currently hosted under my own GH account
-riaknostic | 2 | - | can be removed?
-bitcask | 3 | develop-3.0 | depends on 'rebar3' branch of cuttlefish, dialyzer not clean
-clique | 3 | develop-3.0 | depends on 'rebar3' branch of cuttlefish
+cuttlefish | 2 | __??? develop-3.0 ???__| There is no develop-3.0 branch in bash repo | In riak_sysmon we point to `rebar3` branch | 1 property passes if rebar.config adapted
+exometer_core | 2 | develop-3.0 | use upstream  |
+merge_index | 2 | - | can be removed?  |
+riak_ensemble | 2 | develop-3.0 | dialyzer fails, copied in files from riak_test. 19 EUnit test passed, nothing about failures, 71% coverage.  | __REVISIT__ 1 property in `eqc/sc.erl`. It passes, but unclear what it tests. Has hard-coded paths in property, e.g. `code:add_path("/Users/jtuple/basho/riak_test.master/deps/riakc/ebin")`  |
+riak_pb | 2 | __develop-3.0-lower__ | dialyzer isn't clean & I had to make a rebar3 plugin that's currently hosted under my own GH account | One property covers 67% of riak_pb_codec
+riaknostic | 2 | - | can be removed? |
+bitcask | 3 | develop-3.0 | depends on 'rebar3' branch of cuttlefish, dialyzer not clean | __REVISIT__
+clique | 3 | develop-3.0 | depends on 'rebar3' branch of cuttlefish | |
 riak_repl_pb_api | 3 | develop-3.0-lower |
-riak_sysmon | 3 | develop-3.0 | 3 EUnit tests passed, 0 failures, 59% code coverage. No EQC tests
+riak_sysmon | 3 | develop-3.0 | 3 EUnit tests passed, 0 failures, 59% code coverage. Points cuttlefish `rebar3` branch | No EQC tests
 riakc | 3 | develop-3.0 |
 riak_core | 4 | develop-3.0 |
 riak_api | 5 |  develop-3.0 | gen_fsm warnings
