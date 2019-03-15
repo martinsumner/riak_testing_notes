@@ -214,6 +214,11 @@ This fails when measuring the change in memory caused by re-putting the same new
 
 It is unclear what the value of this test is, or the reasoning why the delta should be less than 3 bytes.  Further, the use of the memory backend is not recommended for production environments.  This test failure should be ignored.
 
+#### yz_solr_upgrade_downgrade
+
+This fails if legacy is not set to at least Riak 2.0.6.  I have machines where this passes consistently, and another where it fails consistently with a number of odd Java exceptions.  This may be related to versions of JDK.
+
+
 ### 2.9 RC1
 
 Test Suite |  Leveled (0.9.12) | Bitcask | Eleveldb
@@ -251,3 +256,22 @@ ensemble | ensemble_remove_node |  |
 cluster_upgrade | n/a | n/a |
 bitcask_only | n/a | All pass | n/a
 eleveldb_only | n/a | n/a | All pass
+
+### 2.9 RC6
+
+Test Suite |  Leveled | Bitcask | Eleveldb
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+kv_all | All pass |  |
+2i_all |  All pass | n/a |
+mapred_all | All pass |  |
+pipe_all | All pass |  |
+core_all | All pass |  |
+rtc_all | All pass |  |
+datatypes_all | All pass |  |
+repl_all | [repl_aae_fullsync](#repl_aae_fullsync) |  |
+admin_all | All pass |  |
+yoko | n/a | [yz_solr_upgrade_downgrade](#yz_solr_upgrade_downgrade) |
+ensemble | All pass |  |
+cluster_upgrade | n/a | n/a |
+bitcask_only | n/a |  | n/a
+eleveldb_only | n/a | n/a |
