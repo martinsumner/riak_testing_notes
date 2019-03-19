@@ -219,59 +219,27 @@ It is unclear what the value of this test is, or the reasoning why the delta sho
 This fails if legacy is not set to at least Riak 2.0.6.  I have machines where this passes consistently, and another where it fails consistently with a number of odd Java exceptions.  This may be related to versions of JDK.
 
 
-### 2.9 RC1
-
-Test Suite |  Leveled (0.9.12) | Bitcask | Eleveldb
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-kv_all | All pass | All pass | kv679_dataloss_fb2
-2i_all |  All pass | n/a |
-mapred_all | [mapred_search_switch](#mapred_search_switch) | |
-pipe_all | All pass |  |
-core_all | All pass | All pass | All pass
-rtc_all | All pass | |
-datatypes_all | All pass |  |
-repl_all | [repl_aae_fullsync](#repl_aae_fullsync) | [repl_aae_fullsync](#repl_aae_fullsync) |
-admin_all | All pass |  |
-yoko | n/a |  |
-ensemble | ensemble_byzantine ensemble_remove_node |  |
-cluster_upgrade | n/a | n/a |  verify_counter_capability (passes on spine profile) [verify_riak_object_reformat](#verify_riak_object_reformat)
-bitcask_only | n/a | All pass | n/a
-eleveldb_only | n/a | n/a | All pass
-
-### 2.9 RC2
-
-Test Suite |  Leveled | Bitcask | Eleveldb
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-kv_all | [verify_conditional_postcommit](#verify_conditional_postcommit) | verify_kv_health_check (pass on re-run) |
-2i_all |  All pass | n/a | All pass
-mapred_all | [mapred_search_switch](#mapred_search_switch) | [mapred_search_switch](#mapred_search_switch) |
-pipe_all | All pass | pipe_verify_handoff_blocking (pass on re-run) |
-core_all | All pass | All pass |
-rtc_all | All pass | All pass |
-datatypes_all | All pass | All pass |
-repl_all | repl_rt_overload (pass on re-run) | [repl_aae_fullsync](#repl_aae_fullsync) |
-admin_all | All pass | All pass |
-yoko | n/a |  |
-ensemble | ensemble_remove_node |  |
-cluster_upgrade | n/a | n/a |
-bitcask_only | n/a | All pass | n/a
-eleveldb_only | n/a | n/a | All pass
-
 ### 2.9 RC6
 
 Test Suite |  Leveled | Bitcask | Eleveldb
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-kv_all | All pass |  |
-2i_all |  All pass | n/a |
+kv_all | All pass | All pass | All pass
+2i_all |  All pass | n/a | All pass
 mapred_all | All pass |  |
 pipe_all | All pass |  |
-core_all | All pass |  |
+core_all | All pass | All pass | All pass
 rtc_all | All pass |  |
 datatypes_all | All pass |  |
-repl_all | [repl_aae_fullsync](#repl_aae_fullsync) |  |
+repl_all | [repl_aae_fullsync](#repl_aae_fullsync) | [repl_aae_fullsync](#repl_aae_fullsync) [repl_rt_overload](#repl_rt_overload) |
 admin_all | All pass |  |
 yoko | n/a | [yz_solr_upgrade_downgrade](#yz_solr_upgrade_downgrade) |
-ensemble | All pass |  |
-cluster_upgrade | n/a | n/a |
-bitcask_only | n/a |  | n/a
-eleveldb_only | n/a | n/a |
+ensemble | All pass | ensemble_remove_node2 | All pass
+cluster_upgrade | n/a | n/a | All pass (on one of ubuntu/osx riak/riak_ee)
+bitcask_only | n/a | [verify_bitcask_tombstone2_upgrade](#verify_bitcask_tombstone2_upgrade) | n/a
+eleveldb_only | n/a | n/a | All pass
+
+#### Throughput comparison
+
+The throughput achieved has changed minimally through the release candidates, with 1% more throughput achieved in the NHS general test in RC6 when compared to RC1:
+
+![](img/RC 29 Throughput Comparison.png)
