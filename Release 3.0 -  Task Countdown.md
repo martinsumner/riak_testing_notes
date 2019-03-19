@@ -66,12 +66,13 @@ m. Priority `gen_statem` uplifts - specifically `riak_kv_get_fsm` and `riak_kv_p
 
 Task | Status
 :-------------------------|:-------------------------:|
-Write-up simplified instructions for deploying and running riak_test | assigned - martin s
-Continue work on unit/eqc test pass rates | to be assigned
-First merge in of develop-2.9 | assigned - martin s
+Write-up simplified instructions for deploying and running riak_test | [complete](https://github.com/basho/riak_test/blob/develop-2.9/doc/SIMPLE_SETUP.md)
+Continue work on unit/eqc test pass rates | assigned - quviq
+First merge in of develop-2.9 | assigned - nhs (kv), bet365 may look at other repos
+Work on relx scripts for running riak_test | assigned - chris m
 First pass at running riak_test, analysis of failures and reasons (needs `make devrel`) | unassigned
 First pass at dialyzer, analysis of failures and reasons | unassigned
-Discuss with andrew develop-3.0 vs develop-3.0-lower | assigned - hans
+Discuss with andrew develop-3.0 vs develop-3.0-lower | complete - lower case to be merged into 3.0 branches
 Write a shot developer guide for working on 3.0 | unassigned
 
 ### Known test issues
