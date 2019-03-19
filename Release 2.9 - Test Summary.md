@@ -229,10 +229,10 @@ mapred_all | All pass |  |
 pipe_all | All pass |  |
 core_all | All pass | All pass | All pass
 rtc_all | All pass |  |
-datatypes_all | All pass |  |
+datatypes_all | All pass | All pass | All pass
 repl_all | [repl_aae_fullsync](#repl_aae_fullsync) | [repl_aae_fullsync](#repl_aae_fullsync) [repl_rt_overload](#repl_rt_overload) |
 admin_all | All pass | All pass | All pass
-yoko | n/a | [yz_solr_upgrade_downgrade](#yz_solr_upgrade_downgrade) |
+yoko | n/a | [yz_solr_upgrade_downgrade](#yz_solr_upgrade_downgrade) | n/a
 ensemble | All pass | ensemble_remove_node2 | All pass
 cluster_upgrade | n/a | n/a | All pass (on one of ubuntu/osx riak/riak_ee)
 bitcask_only | n/a | [verify_bitcask_tombstone2_upgrade](#verify_bitcask_tombstone2_upgrade) | n/a
