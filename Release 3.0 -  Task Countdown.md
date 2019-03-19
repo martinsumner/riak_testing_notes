@@ -143,9 +143,18 @@ riak | 8 |  develop-3.0 |
 
 
 
-## Workshop 2 - late April / early May
+## Workshop 2 - early May
 
-tba
+Please record any availability issues you may have, on the following dates (assuming a workshop in Leeds):
+
+- 1st to 3rd May
+- 8th to 10th May
+
+Dates |  Available | Not Available
+:-------------------------|:-------------------------|:-------------------------
+1st to 3rd May | Martin Sumner |
+8th to 10th May | Martin Sumner |
+
 
 ## Longer Term OTP-Tracking Work
 
