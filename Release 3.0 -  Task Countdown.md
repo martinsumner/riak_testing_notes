@@ -135,13 +135,21 @@ riak_core | 4 | develop-3.0 | | __REVISIT__ property  `bg_manager_eqc:prop_bgmgr
 riak_api | 5 | develop-3.0 | 33 unit tests passed (tests create a `log` directory, configure needed) | no properties
 riak_control | 5 | develop-3.0 | Building packages.idx multiple times... takes ages. Rebar3 build seems terribly broken (recursively depending on itself?). __REVISIT__
 riak_pipe | 5 | develop-3.0 | 8 EUnit test passed, 0 failures, 5% coverage. | 1 property passed. __REVISIT__ properties not executed and PULSE based on gen_fsm, but not instrumented for gen_fsm_compat.
-riak_kv | 6 | develop-3.0 --> __develop-3.0-lower__ now exists as well also __develop-3.0-merge__ which contains develop-2.9| eqc/xref/dialyzer need work. Test data issue: https://github.com/basho/riak_kv/issues/1685 | 22 properties pass, 1 property fails __REVISIT__ riak_kv_vnode_status_mgr:prop_any_file_status()
+riak_kv | 6 | develop-3.0 --> __develop-3.0-lower__ now exists as well also __develop-3.0-merge29__ which contains develop-2.9| eqc/xref/dialyzer need work. Test data issue: https://github.com/basho/riak_kv/issues/1685 | 22 properties pass, 1 property fails __REVISIT__ riak_kv_vnode_status_mgr:prop_any_file_status()
 riak_repl | 7 | __develop-3.0-lower__ | Needs to point to develop.3.0-lower in riak_kv to make it compile. Export all in test and erlang:now usage. __REVISIT__ 5 failing tests of 72, 10 canceled | Some properties pass, some fail. Need further investigation
 riak_search | 7 | - | can be removed?
 yokozuna | 7 | develop-3.0 | currently not integrated
 riak | 8 |  develop-3.0 |
 
+### Progress with develop-2.9 merge
 
+For each repo used by riak which has a develop-2.9 branches (i.e. with changes from develop-2.2), there is also a need to merge develop-2.9 with develop-3.0.  For these repos this merged result will be in a `develop-3.0-merge29` branch.  Status of this work by repo is:
+
+Repo | Status | Pull Request
+:-------------------------|:-------------------------|:--------------------
+riak_kv | Compiles, and All eunit and eqc tests pass (`./rebar3 as eqc eunit` and `./rebar3 eqc`).  Almost all tests correctly write to disk in `_build/test`.  Multiple issues with dialyzer | [PR Outstanding](https://github.com/basho/riak_kv/pull/1690)
+webmachine | Built from the `develop-2.9` branch.  All eunit tests pass.  Multiple issues with dialyzer | [PR Outstanding](https://github.com/basho/webmachine/pull/15)
+mochiweb | Built from the `develop-2.9` branch.  All eunit tests pass.  Multiple issues with dialyzer | [PR Outstanding](https://github.com/basho/mochiweb/pull/28)
 
 ## Workshop 2 - early May
 
