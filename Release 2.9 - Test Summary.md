@@ -130,6 +130,8 @@ This fails when validating an intercepted full-sync, in particular:
 
 However - this does align with a known issue.  AAE full-sync fails whenever the hashtrees are not built.
 
+The repl_aae_fullsync has now been split the testing with intercepted vnodes is now in a new test repl_aae_fullsync_blocked, which intermittently passes.  All the other tests are covered in repl_aae_fullsync which should now consistently pass.
+
 #### repl_bucket_types
 
 This fails at the very start of the test when waiting for the clusters to build, due to the riak_repl service not starting (the startup monitors for riak_repl, and never sees it).
@@ -140,7 +142,7 @@ Note repl_bucket_types has now been re-assigned into the cluster_upgrade group.
 
 #### verify_bitcask_tombstone2_upgrade
 
-This test is due to a `enoent` failure when switching the configuration file.
+This test is due to a `enoent` failure when switching the configuration file.  Note the test comments assumes a legacy version pre 2.0.  This test is therefore no longer applicable.
 
 ### Test Results - Round 2
 
@@ -225,18 +227,38 @@ Test Suite |  Leveled | Bitcask | Eleveldb
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 kv_all | All pass | All pass | All pass
 2i_all |  All pass | n/a | All pass
-mapred_all | All pass |  |
-pipe_all | All pass |  |
+mapred_all | All pass | [mapred_search_switch](#mapred_search_switch) | [mapred_search_switch](#mapred_search_switch)
+pipe_all | All pass | All pass | All pass
 core_all | All pass | All pass | All pass
-rtc_all | All pass |  |
+rtc_all | All pass | All pass | All pass
 datatypes_all | All pass | All pass | All pass
-repl_all | [repl_aae_fullsync](#repl_aae_fullsync) | [repl_aae_fullsync](#repl_aae_fullsync) [repl_rt_overload](#repl_rt_overload) |
+repl_all | [repl_aae_fullsync](#repl_aae_fullsync) | [repl_aae_fullsync](#repl_aae_fullsync) [repl_rt_overload](#repl_rt_overload) | [repl_aae_fullsync](#repl_aae_fullsync)
 admin_all | All pass | All pass | All pass
 yoko | n/a | [yz_solr_upgrade_downgrade](#yz_solr_upgrade_downgrade) | n/a
 ensemble | All pass | ensemble_remove_node2 | All pass
 cluster_upgrade | n/a | n/a | All pass (on one of ubuntu/osx riak/riak_ee)
 bitcask_only | n/a | [verify_bitcask_tombstone2_upgrade](#verify_bitcask_tombstone2_upgrade) | n/a
 eleveldb_only | n/a | n/a | All pass
+
+### 2.9 RC7
+
+Test Suite |  Leveled (| Bitcask | Eleveldb)
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+kv_all | All pass |  |
+2i_all |  All pass | n/a |
+mapred_all | All pass |  |
+pipe_all | All pass |  |
+core_all | All pass |  |
+rtc_all | All pass |  |
+datatypes_all | All pass |  |
+repl_all | [repl_aae_fullsync](#repl_aae_fullsync) |  |
+admin_all | All pass |  |
+yoko | n/a | [yz_solr_upgrade_downgrade](#yz_solr_upgrade_downgrade) | n/a
+ensemble | All pass |  |
+cluster_upgrade | n/a | n/a | All pass
+bitcask_only | n/a | [verify_bitcask_tombstone2_upgrade](#verify_bitcask_tombstone2_upgrade) | n/a
+eleveldb_only | n/a | n/a | All pass
+
 
 #### Throughput comparison
 
