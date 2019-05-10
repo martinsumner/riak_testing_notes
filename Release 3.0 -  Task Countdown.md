@@ -34,21 +34,21 @@ The work on release 3.0 builds on the efforts of multiple people who have contri
 
 ### Key Challenges Remaining
 
-Where future challenges have changed since previous workshop, items are __now in bold__.
+Where future challenges have changed since previous workshop, items are **now in bold**.
 
 a. Achieve a complete unit/eqc test pass rate across riak (using the locked dependencies)
 
-__b. Complete pass rate across riak_test tests__
+**b. Complete pass rate across riak_test tests**
 
 c. Address dialyzer issues, without depending on line-referenced ignore files.  Note there is unreleased work from Basho to assist with this work.  Replace use of nowarn export-all in non-test code.
 
-__d. Outstanding work on script exits, and ensuring make devrel is robust and repeatable__
+**d. Outstanding work on script exits, and ensuring make devrel is robust and repeatable**
 
-__e. Complete merge of all repos changed in 2.9.  Also merge in 2.9.1 __
+**e. Complete merge of all repos changed in 2.9.  Also merge in 2.9.1**
 
 f. Develop a better basic test for the riak parent.  Potentially port in Goncalo Tomas's `riak_tests` into riak so that we can run the `riak_test` `vape` tests as a `rebar ct` test option.  Determine an overnight CI strategy for `develop-3.0`.
 
-__g. To complete yokozuna integration, remove hard dependency via https://github.com/basho/riak_kv/pull/1571 __
+**g. To complete yokozuna integration, remove hard dependency via** https://github.com/basho/riak_kv/pull/1571
 
 
 h. Third party repo review e.g. webmachine, mochiweb, poolboy, lager - fix versions, and agree strategy.  Also look at removing "minor" repos that are used sparingly (e.g. kvc), or are related to test issue (e.g. sidejob)
