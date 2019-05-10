@@ -7,7 +7,6 @@ Release 3.0 has two primary goals:
 
 The aim is to provide confidence to current Riak customers that Riak will be efficiently maintainable for at least the next o(10) years, but also make Riak easier to adopt within existing scale-out Erlang/Elixir environments.
 
-Release 3.0 will not support a smooth upgrade from multiple previous Riak versions.  It will be tested only for migration using node join/leave events from Riak 2.9.
 
 ## Background to the work on 3.0
 
@@ -19,7 +18,54 @@ The work on release 3.0 builds on the efforts of multiple people who have contri
 - bet365;
 - plus other key individuals - e.g. Christopher Meiklejohn, Antonio Nikishaev.
 
-## Workshop 1 - 6th March to 8th March
+## Workshop 2 - 8th May to 10th May 2019
+
+### Progress at end of Workshop
+
+- Repeatable compilation, and release/startup of Riak on OTP 20 with all components (i.e. including yokozuna);
+
+- A temporary solution to allow for `make devrel` to create an 8 node cluster with appropriate variable substitution;
+
+- Merge in of major 2.9 code uplifts in 3.0 (riak_kv, riak_core) - 3.0 now to build on 2.9;
+
+- Repeatable capability to run individual and groups of `riak_test` tests;
+
+- Analysis of initial riak_test failures.
+
+### Key Challenges Remaining
+
+Where future challenges have changed since previous workshop, items are __now in bold__.
+
+a. Achieve a complete unit/eqc test pass rate across riak (using the locked dependencies)
+
+__b. Complete pass rate across riak_test tests__
+
+c. Address dialyzer issues, without depending on line-referenced ignore files.  Note there is unreleased work from Basho to assist with this work.  Replace use of nowarn export-all in non-test code.
+
+__d. Outstanding work on script exits, and ensuring make devrel is robust and repeatable__
+
+__e. Complete merge of all repos changed in 2.9.  Also merge in 2.9.1 __
+
+f. Develop a better basic test for the riak parent.  Potentially port in Goncalo Tomas's `riak_tests` into riak so that we can run the `riak_test` `vape` tests as a `rebar ct` test option.  Determine an overnight CI strategy for `develop-3.0`.
+
+__g. To complete yokozuna integration, remove hard dependency via https://github.com/basho/riak_kv/pull/1571 __
+
+
+h. Third party repo review e.g. webmachine, mochiweb, poolboy, lager - fix versions, and agree strategy.  Also look at removing "minor" repos that are used sparingly (e.g. kvc), or are related to test issue (e.g. sidejob)
+
+i. Investigate better isolation of components through the build process so that the nucleus of Riak can be deployed without "optional" components - e.g. ensemble, yokozuna, nif-backends, legacy-repl.
+
+j. Non-functional testing for performance/throughput comparison to `develop-2.9`.
+
+k. Testing of migration with repeatable instructions (ideally for a single machine), between `develop-2.9`/OTP16 to `develop-3.0`/OTP20.
+
+l. Fully document feature incompatibilities e.g. Tictac AAE, yokozuna, multi-backend, riak_ensemble.  Removing redacted deprecation notices.
+
+m. Priority `gen_statem` uplifts - specifically `riak_kv_get_fsm` and `riak_kv_put_fsm`.
+
+__n. Add travis CI scripts for major repos - should aim to cover at least eunit tests and dialyzer.  Potential to concurrently have a Quickcheck CI service validate PRs (or overnight builds)__
+
+## Workshop 1 - 6th March to 8th March 2019
 
 ### Progress at end of workshop
 
@@ -62,23 +108,32 @@ m. Priority `gen_statem` uplifts - specifically `riak_kv_get_fsm` and `riak_kv_p
 
 
 
-### Specific Challenges prior to Next Workshop
+### Outstanding Challenges prior to Workshop 2 (8th May)
 
 Task | Status
 :-------------------------|:-------------------------:|
-Write-up simplified instructions for deploying and running riak_test | [complete](https://github.com/basho/riak_test/blob/develop-2.9/doc/SIMPLE_SETUP.md)
-Continue work on unit/eqc test pass rates | assigned - quviq
-First merge in of develop-2.9 | assigned - nhs (kv), bet365 may look at other repos
-Work on relx scripts for running riak_test | assigned - chris m
-First pass at running riak_test, analysis of failures and reasons (needs `make devrel`) | unassigned
-First pass at dialyzer, analysis of failures and reasons | unassigned
-Discuss with andrew develop-3.0 vs develop-3.0-lower | complete - lower case to be merged into 3.0 branches
-Write a shot developer guide for working on 3.0 | unassigned
+Continue work on unit/eqc test pass rates | progressed - quviq
+First merge in of develop-2.9 | progressed - mas/mcx
+Work on relx scripts for running riak_test | progressed - mcx
+First pass at running riak_test, analysis of failures and reasons (needs `make devrel`) | progressed at workshop 2
+First pass at dialyzer, analysis of failures and reasons | no progress
+Write a shot developer guide for working on 3.0 | no progress
 
-### Known test issues
+### Know riak_test issues
 
+TEST | REASON | PROPOSED ACTION | STATUS
+:-- | :-- | :-- | --
+basic_command_line | Exit code from scripts | mcx investigating across all scripts | Fail
+bucket_props_validations | issue with druuid | remove druuid module | Pass - 10/05/19
+bucket_types | js map/reduce (no longer supported) | replace with erlang map/reduce | Fail
+coverage_participation | intermittent issue with final stage (proving node included in coverage plans when participation re-enabled) | Not known | Fail
+http_bucket_types | js map/reduce (no longer supported) | replace with erlang map/reduce | Fail
+pb_security | Issue with hostname validation (new to OTP20?) | Not known | Fail
+verify_riak_stats | Repos removed from riak expected in stats, more repos reporting than previously (not necessarily new ones) | Not known | Fail
 
-REPO | NODE | NEW_BRANCH | NOTES | QuickCheck |
+### Known unit/property test issues
+
+REPO | NODE | COMMIT | NOTES | QuickCheck |
 -- | -- | -- | -- | -- |
 basho_stats | 0  | develop-3.0 | neither EUnit tests nor QC tests run because missing_R_executable file |
 bear | 0 | develop-3.0 | use upstream |
@@ -147,21 +202,14 @@ For each repo used by riak which has a develop-2.9 branches (i.e. with changes f
 
 Repo | Status | Pull Request
 :-------------------------|:-------------------------|:--------------------
-riak_kv | Compiles, and All eunit and eqc tests pass (`./rebar3 as eqc eunit` and `./rebar3 eqc`).  Almost all tests correctly write to disk in `_build/test`.  Multiple issues with dialyzer | [PR Outstanding](https://github.com/basho/riak_kv/pull/1690)
+riak_kv | Compiles, and All eunit and eqc tests pass (`./rebar3 as eqc eunit` and `./rebar3 eqc`).  Almost all tests correctly write to disk in `_build/test`.  Multiple issues with dialyzer | merged
+riak_core | Not yet passing all tests | merged - quviq to look at outstanding failures
 webmachine | Built from the `develop-2.9` branch.  All eunit tests pass.  Multiple issues with dialyzer | [PR Outstanding](https://github.com/basho/webmachine/pull/15)
 mochiweb | Built from the `develop-2.9` branch.  All eunit tests pass.  Multiple issues with dialyzer | [PR Outstanding](https://github.com/basho/mochiweb/pull/28)
 
-## Workshop 2 - early May
+## Workshop 3 - late June
 
-Please record any availability issues you may have, on the following dates (assuming a workshop in Leeds):
-
-- 1st to 3rd May
-- 8th to 10th May
-
-Dates |  Available | Not Available
-:-------------------------|:-------------------------|:-------------------------
-1st to 3rd May | Martin Sumner |
-8th to 10th May | Martin Sumner |
+Date to be proposed
 
 
 ## Longer Term OTP-Tracking Work
