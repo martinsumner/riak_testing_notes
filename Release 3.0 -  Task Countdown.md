@@ -128,8 +128,9 @@ bucket_props_validations | issue with druuid | remove druuid module | Pass - 10/
 bucket_types | js map/reduce (no longer supported) | replace with erlang map/reduce | Fail
 coverage_participation | intermittent issue with final stage (proving node included in coverage plans when participation re-enabled) | Not known | Fail
 http_bucket_types | js map/reduce (no longer supported) | replace with erlang map/reduce | Fail
+partition_repair | enoent on spam files | spam files not unzipped correctly - local issue | Pass - 10/05/18
 pb_security | Issue with hostname validation (new to OTP20?) | Not known | Fail
-verify_riak_stats | Repos removed from riak expected in stats, more repos reporting than previously (not necessarily new ones) | Not known | Fail
+verify_riak_stats | Repos removed from riak expected in stats, more repos reporting than previously (not necessarily new ones) | Some apps have been removed (js map/reduce and riak_control) - some pre-existing libraries have been added to app.src so although they are not new they are now reported.  Test should reflect new reality | Pass - 10/05/19
 
 ### Known unit/property test issues
 
