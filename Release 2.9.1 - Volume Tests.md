@@ -62,19 +62,50 @@ This chart compares the PUT time against the PUT & CHECK_REPL time for `riak_rep
 
 This is the equivalent chart for `nextgenrepl`:
 
-![](img/ReplTimeNectGenReplBitcask.png)
+![](img/ReplTimeNextGenReplBitcask.png)
 
-On average, across the test, with `nextgenrepl` the time to PUT/REPL/GET was **14.18ms** greater than the PUT time - an increase of **16.7%** on the PUT time.  On average, across the test, with `riak_repl` the time to PUT/REPL/GET was **97.79ms** greater than the PUT time - an increase of **111.9%** on the PUT time.
+The difference between the configurations, is highlighted by the increased READ volume on the disk system when running riak_repl with fullsync.  An extra 40MB/s of read throughput is required by node to run keylisting full-sync.
 
+![](img/DiskUtilisationNextGenReplBitcask.png)
 
-With the `riak_repl` test, there is a continuous background full-sync operation running with the default configuration for concurrency.  At the closing data volume for  the test, each full-sync is taking > 24 hours to complete on the cluster.
+![](img/DiskUtilisationRiakReplBitcask.png)
 
-With the `nextgenrepl` test a full-sync is initiated and completed every 15 minutes.  There is a 2-orders of magnitude difference in the frequency of full-syncs possible when comparing the two replication mechanisms.
+Test stats:
+
+- On average, across the test, with `nextgenrepl` the time to PUT/REPL/GET was **14.18ms** greater than the PUT time - an increase of **16.7%** on the PUT time.
+
+- On average, across the test, with `riak_repl` the time to PUT/REPL/GET was **97.79ms** greater than the PUT time - an increase of **111.9%** on the PUT time.
+
+- When testing with `nextgenrepl` rather than `riak_repl` there was a **5.99%** increase in throughput across the test.
+
+- With the `riak_repl` test, there is a continuous background full-sync operation running with the default configuration for concurrency.  At the closing data volume for  the test, each full-sync is taking > 24 hours to complete on the cluster.
+
+- With the `nextgenrepl` test a full-sync is initiated and completed every 15 minutes.  There is a 2-orders of magnitude difference in the frequency of full-syncs possible when comparing the two replication mechanisms.
 
 ## Leveled - Compare riak_repl with nextgenrepl
 
-On average, across the test, with `nextgenrepl` the time to PUT/REPL/GET was **4.26ms** greater than the PUT time - an increase of **14.7%** on the PUT time.  
+Test stats:
+
+- On average, across the test, with `nextgenrepl` the time to PUT/REPL/GET was **4.26ms** greater than the PUT time - an increase of **14.7%** on the PUT time.  
 
 ## Leveldb - Compare riak_repl with nextgenrepl
 
-On average, across the test, with `nextgenrepl` the time to PUT/REPL/GET was **3.70ms** greater than the PUT time - an increase of **5.0%** on the PUT time.  On average, across the test, with `riak_repl` the time to PUT/REPL/GET was **4.60ms** greater than the PUT time - an increase of **6.1%** on the PUT time.
+Test stats:
+
+- On average, across the test, with `nextgenrepl` the time to PUT/REPL/GET was **3.70ms** greater than the PUT time - an increase of **5.0%** on the PUT time.
+
+- On average, across the test, with `riak_repl` the time to PUT/REPL/GET was **4.60ms** greater than the PUT time - an increase of **6.1%** on the PUT time.
+
+- When testing with `nextgenrepl` rather than `riak_repl` there was a **2.57%** increase in throughput across the test.
+
+The small difference in throughput when switching repl is relatively hard to detect with a leveldb backend:
+
+![](img/ReplThroughputLeveldb.png)
+
+This chart compares the PUT time against the PUT & CHECK_REPL time for `riak_repl`:
+
+![](img/ReplTimeRiakReplLeveldb.png)
+
+This is the equivalent chart for `nextgenrepl`:
+
+![](img/ReplTimeNextGenReplLeveldb.png)
