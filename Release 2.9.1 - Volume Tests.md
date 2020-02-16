@@ -52,7 +52,7 @@ The comparison between backends of throughput graphed against aggregated PUT vol
 
 Testing with the bitcask backend, the test was run with three settings: `nextgenrepl` - for both full-sync and real-time replication; `riak_repl` - for both full-sync and real-time replication, and; `mixed_repl` - `nextgenrepl` full-sync and `riak_repl` real-time replication.
 
-Focusing on throughput, the transactionr ates were similar for the `nextgenrepl` and `mixed_repl` tests, but **5.7%** lower in the `riak_repl` test:
+Focusing on throughput, the transactionr ates were similar for the `nextgenrepl` and `mixed_repl` tests, but nearly 6% lower in the `riak_repl` test:
 
 ![](img/ReplThroughputBitcask.png)
 
@@ -70,11 +70,13 @@ This is the equivalent chart for `mixedrepl`:
 
 ![](img/ReplTimeMixedReplBitcask.png)
 
-The difference between the configurations, is highlighted by the increased READ volume on the disk system when running riak_repl with fullsync.  An extra 40MB/s of read throughput is required by node to run keylisting full-sync.
+The difference in throughput, is related to the increased READ volume on the disk system when running riak_repl with fullsync.  An extra 40MB/s of read throughput is required by node to run keylisting full-sync.
 
 ![](img/DiskUtilisationNextGenReplBitcask.png)
 
 ![](img/DiskUtilisationRiakReplBitcask.png)
+
+The difference in replication latency is related to the change of replication point.  In `nextgenrepl` PUTs are intercepted for replication after the coordinated PUT, where as in `riak_repl` PUTs are only intercepted after "enough" responses have been received and the post-commit hook is fired. 
 
 Test stats:
 
