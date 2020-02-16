@@ -50,19 +50,25 @@ The comparison between backends of throughput graphed against aggregated PUT vol
 
 ## Bitcask - Compare riak_repl to nextgenrepl
 
-Looking at the bitcask backend, it can be seen that throughput improves if the test id run with `nextgenrepl` not `riak_repl` with full-sync enabled:
+Testing with the bitcask backend, the test was run with three settings: `nextgenrepl` - for both full-sync and real-time replication; `riak_repl` - for both full-sync and real-time replication, and; `mixed_repl` - `nextgenrepl` full-sync and `riak_repl` real-time replication.
+
+Focusing on throughput, the transactionr ates were similar for the `nextgenrepl` and `mixed_repl` tests, but **5.7%** lower in the `riak_repl` test:
 
 ![](img/ReplThroughputBitcask.png)
 
-There is also an improvement in the replication time, and the volatility of the replication time.
+There is a significant improvement in the replication time, and the volatility of the replication time with the `nextgenrepl` test compared to both the `mixed_repl` and `riak_repl` tests
 
-This chart compares the PUT time against the PUT & CHECK_REPL time for `riak_repl`:
+This chart compares the PUT time against the PUT & CHECK_REPL time for `nextgenrepl`:
+
+![](img/ReplTimeNextGenReplBitcask.png):
+
+This is the equivalent chart for `riak_repl`:
 
 ![](img/ReplTimeRiakReplBitcask.png)
 
-This is the equivalent chart for `nextgenrepl`:
+This is the equivalent chart for `mixedrepl`:
 
-![](img/ReplTimeNextGenReplBitcask.png)
+![](img/ReplTimeMixedReplBitcask.png)
 
 The difference between the configurations, is highlighted by the increased READ volume on the disk system when running riak_repl with fullsync.  An extra 40MB/s of read throughput is required by node to run keylisting full-sync.
 
